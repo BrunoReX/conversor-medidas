@@ -1,35 +1,106 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import mainLogo from "./assets/logo.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [origValue, setOrigValue] = useState(1);
+  const [convValue, setConvValue] = useState("");
+  const [origUnit, setOrigUnit] = useState("Kilometros");
+  const [convUnit, setConvUnit] = useState("Milhas");
+
+  const units = ["Kilometros", "Milhas"];
+  const MILE_TO_KM = 1.60934;
+  const KM_TO_MILE = 0.60934;
+
+  function convertUnit(value) {
+    if (isNaN(+value)) {
+      return "Invalid number!";
+    }
+
+    if (origUnit === "Kilometros") {
+      switch (convUnit) {
+        case "Milhas":
+          return value * KM_TO_MILE;
+      }
+    } else if (origUnit === "Milhas") {
+      switch (convUnit) {
+        case "Kilometros":
+          return value * MILE_TO_KM;
+      }
+    }
+
+    return value;
+  }
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img src={mainLogo} className="logo" alt="Logo" />
       </div>
-      <h1>Vite + React</h1>
+      <h1>Conversor de Medidas</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <label htmlFor="origUnit" className="label topLabel">
+          Unidade original:{" "}
+        </label>
+        <select
+          id="origUnit"
+          className="unitSelect"
+          value={origUnit}
+          onChange={(event) => setOrigUnit(event.target.value)}
+        >
+          {units.map((unit, key) => (
+            <option key={key} value={unit}>{unit}</option>
+          ))}
+        </select>
+        <br />
+        <label htmlFor="convUnit" className="label topLabel">
+          Unidade convertida:{" "}
+        </label>
+        <select
+          id="convUnit"
+          className="unitSelect"
+          value={convUnit}
+          onChange={(event) => setConvUnit(event.target.value)}
+        >
+          {units.map((unit, key) => (
+            <option key={key} value={unit}>{unit}</option>
+          ))}
+        </select>
+        <br />
+        <br />
+
+        <label className="label" htmlFor="orignalValue">
+          Valor original:{" "}
+        </label>
+        <input
+          id="originalValue"
+          className="valueInput"
+          value={origValue}
+          onChange={(event) => setOrigValue(event.target.value)}
+        ></input>
+        <br />
+
+        <label className="label" htmlFor="convertedValue">
+          Valor convertido:{" "}
+        </label>
+        <input
+          id="convertedValue"
+          className="valueInput"
+          value={convValue}
+          disabled={true}
+        ></input>
+        <br />
+        <br />
+        <button
+          onClick={() =>
+            setConvValue(convertUnit(origValue, origUnit, convUnit))
+          }
+        >
+          Converter
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
