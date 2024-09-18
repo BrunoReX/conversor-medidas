@@ -21,11 +21,28 @@ function App() {
       switch (convUnit) {
         case Constants.MILES:
           value = Constants.KM_TO_MILE(value);
+          break;
+        case Constants.CM:
+          value = Constants.KM_TO_CM(value);
+          break;
       }
     } else if (origUnit === Constants.MILES) {
       switch (convUnit) {
         case Constants.KM:
           value = Constants.MILE_TO_KM(value);
+          break;
+        case Constants.CM:
+          value = Constants.MILE_TO_CM(value);
+          break;
+      }
+    } else if (origUnit === Constants.CM) {
+      switch (convUnit) {
+        case Constants.KM:
+          value = Constants.CM_TO_KM(value);
+          break;
+        case Constants.MILES:
+          value = Constants.CM_TO_MILE(value);
+          break;
       }
     }
 
