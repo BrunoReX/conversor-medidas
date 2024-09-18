@@ -1,30 +1,43 @@
 import { useState } from "react";
 import mainLogo from "./assets/logo.svg";
 import "./App.css";
-import * as Constants from "./Constants.js"
+import * as Constants from "./Constants.js";
 
 function App() {
-  const [origValue, setOrigValue] = useState(1);
+  const [origValue, setOrigValue] = useState("");
   const [convValue, setConvValue] = useState("");
   const [origUnit, setOrigUnit] = useState(Constants.KM);
   const [convUnit, setConvUnit] = useState(Constants.MILES);
 
   function convertUnit(value) {
+    // Usar separador original para calculo
+    value = value.replace(/,/g, ".");
+
     if (isNaN(+value)) {
       return "Número inválido!";
     }
 
     if (origUnit === Constants.KM) {
       switch (convUnit) {
-        case "Milhas":
-          return value * Constants.KM_TO_MILE;
+        case Constants.MILES:
+          value = value * Constants.KM_TO_MILE;
       }
     } else if (origUnit === Constants.MILES) {
       switch (convUnit) {
-        case "Kilometros":
-          return value * Constants.MILE_TO_KM;
+        case Constants.KM:
+          value = value * Constants.MILE_TO_KM;
       }
     }
+
+    return fixInput(value);
+  }
+
+  function fixInput(value) {
+    // Separador decimal usado no Brasil
+    value = value.toString().replace(/\./g, ",");
+
+    // Aceite apenas números e virgulas
+    value = value.replace(/[^\d,]/g, "");
 
     return value;
   }
@@ -46,7 +59,9 @@ function App() {
           onChange={(event) => setOrigUnit(event.target.value)}
         >
           {Constants.units.map((unit, key) => (
-            <option key={key} value={unit}>{unit}</option>
+            <option key={key} value={unit}>
+              {unit}
+            </option>
           ))}
         </select>
         <br />
@@ -60,7 +75,9 @@ function App() {
           onChange={(event) => setConvUnit(event.target.value)}
         >
           {Constants.units.map((unit, key) => (
-            <option key={key} value={unit}>{unit}</option>
+            <option key={key} value={unit}>
+              {unit}
+            </option>
           ))}
         </select>
         <br />
@@ -73,7 +90,7 @@ function App() {
           id="originalValue"
           className="valueInput"
           value={origValue}
-          onChange={(event) => setOrigValue(event.target.value)}
+          onChange={(event) => setOrigValue(fixInput(event.target.value))}
         ></input>
         <br />
 
