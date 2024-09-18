@@ -133,6 +133,7 @@ function App() {
           Converter
         </button>
       </div>
+      <br />
       <footer className="footer">
         <span>© 2024 Bruno Barbieri ~</span>
         <span>
