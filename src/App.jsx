@@ -20,12 +20,12 @@ function App() {
     if (origUnit === Constants.KM) {
       switch (convUnit) {
         case Constants.MILES:
-          value = value * Constants.KM_TO_MILE;
+          value = Constants.KM_TO_MILE(value);
       }
     } else if (origUnit === Constants.MILES) {
       switch (convUnit) {
         case Constants.KM:
-          value = value * Constants.MILE_TO_KM;
+          value = Constants.MILE_TO_KM(value);
       }
     }
 
