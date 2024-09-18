@@ -1,31 +1,28 @@
 import { useState } from "react";
 import mainLogo from "./assets/logo.svg";
 import "./App.css";
+import * as Constants from "./Constants.js"
 
 function App() {
   const [origValue, setOrigValue] = useState(1);
   const [convValue, setConvValue] = useState("");
-  const [origUnit, setOrigUnit] = useState("Kilometros");
-  const [convUnit, setConvUnit] = useState("Milhas");
-
-  const units = ["Kilometros", "Milhas"];
-  const MILE_TO_KM = 1.60934;
-  const KM_TO_MILE = 0.60934;
+  const [origUnit, setOrigUnit] = useState(Constants.KM);
+  const [convUnit, setConvUnit] = useState(Constants.MILES);
 
   function convertUnit(value) {
     if (isNaN(+value)) {
-      return "Invalid number!";
+      return "Número inválido!";
     }
 
-    if (origUnit === "Kilometros") {
+    if (origUnit === Constants.KM) {
       switch (convUnit) {
         case "Milhas":
-          return value * KM_TO_MILE;
+          return value * Constants.KM_TO_MILE;
       }
-    } else if (origUnit === "Milhas") {
+    } else if (origUnit === Constants.MILES) {
       switch (convUnit) {
         case "Kilometros":
-          return value * MILE_TO_KM;
+          return value * Constants.MILE_TO_KM;
       }
     }
 
@@ -48,7 +45,7 @@ function App() {
           value={origUnit}
           onChange={(event) => setOrigUnit(event.target.value)}
         >
-          {units.map((unit, key) => (
+          {Constants.units.map((unit, key) => (
             <option key={key} value={unit}>{unit}</option>
           ))}
         </select>
@@ -62,7 +59,7 @@ function App() {
           value={convUnit}
           onChange={(event) => setConvUnit(event.target.value)}
         >
-          {units.map((unit, key) => (
+          {Constants.units.map((unit, key) => (
             <option key={key} value={unit}>{unit}</option>
           ))}
         </select>
