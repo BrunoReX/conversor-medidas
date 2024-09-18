@@ -86,6 +86,7 @@ function App() {
         <label className="label" htmlFor="orignalValue">
           Valor original:{" "}
         </label>
+        <br />
         <input
           id="originalValue"
           className="valueInput"
@@ -93,10 +94,12 @@ function App() {
           onChange={(event) => setOrigValue(fixInput(event.target.value))}
         ></input>
         <br />
+        <br />
 
         <label className="label" htmlFor="convertedValue">
           Valor convertido:{" "}
         </label>
+        <br />
         <input
           id="convertedValue"
           className="valueInput"
@@ -113,6 +116,19 @@ function App() {
           Converter
         </button>
       </div>
+      <footer className="footer">
+        <span>© 2024 Bruno Barbieri ~</span>
+        <span>
+          {" "}
+          Feito usando <a href="https://react.dev/">React</a> ~
+        </span>
+        <span>
+          <a href="https://github.com/BrunoReX/conversor-medidas">
+            {" "}
+            Código-fonte
+          </a>
+        </span>
+      </footer>
     </>
   );
 }
