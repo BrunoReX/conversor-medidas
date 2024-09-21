@@ -25,6 +25,9 @@ function App() {
         case Constants.CM:
           value = Constants.KM_TO_CM(value);
           break;
+        case Constants.M:
+          value = Constants.KM_TO_M(value);
+          break;
       }
     } else if (origUnit === Constants.MILES) {
       switch (convUnit) {
@@ -34,6 +37,9 @@ function App() {
         case Constants.CM:
           value = Constants.MILE_TO_CM(value);
           break;
+        case Constants.M:
+          value = Constants.MILE_TO_M(value);
+          break;
       }
     } else if (origUnit === Constants.CM) {
       switch (convUnit) {
@@ -42,6 +48,21 @@ function App() {
           break;
         case Constants.MILES:
           value = Constants.CM_TO_MILE(value);
+          break;
+        case Constants.M:
+          value = Constants.CM_TO_M(value);
+          break;
+      }
+    } else if (origUnit === Constants.M) {
+      switch (convUnit) {
+        case Constants.CM:
+          value = Constants.M_TO_CM(value);
+          break;
+        case Constants.KM:
+          value = Constants.M_TO_KM(value);
+          break;
+        case Constants.MILES:
+          value = Constants.M_TO_MILE(value);
           break;
       }
     }
