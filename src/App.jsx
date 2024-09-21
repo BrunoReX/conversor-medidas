@@ -2,6 +2,7 @@ import { useState } from "react";
 import mainLogo from "./assets/logo.svg";
 import "./App.css";
 import * as Constants from "./Constants.js";
+import * as Conversions from "./Conversions.js";
 
 function App() {
   const [origValue, setOrigValue] = useState("");
@@ -17,54 +18,14 @@ function App() {
       return "Número inválido!";
     }
 
-    if (origUnit === Constants.KM) {
-      switch (convUnit) {
-        case Constants.CM:
-          value = Constants.KM_TO_CM(value);
-          break;
-        case Constants.M:
-          value = Constants.KM_TO_M(value);
-          break;
-        case Constants.MILES:
-          value = Constants.KM_TO_MILE(value);
-          break;
-      }
-    } else if (origUnit === Constants.MILES) {
-      switch (convUnit) {
-        case Constants.CM:
-          value = Constants.MILE_TO_CM(value);
-          break;
-        case Constants.M:
-          value = Constants.MILE_TO_M(value);
-          break;
-        case Constants.KM:
-          value = Constants.MILE_TO_KM(value);
-          break;
-      }
-    } else if (origUnit === Constants.CM) {
-      switch (convUnit) {
-        case Constants.M:
-          value = Constants.CM_TO_M(value);
-          break;
-        case Constants.KM:
-          value = Constants.CM_TO_KM(value);
-          break;
-        case Constants.MILES:
-          value = Constants.CM_TO_MILE(value);
-          break;
-      }
+    if (origUnit === Constants.CM) {
+      value = Conversions.CmConversion(convUnit, value);
+    } else if (origUnit === Constants.KM) {
+      value = Conversions.KmConversion(convUnit, value);
     } else if (origUnit === Constants.M) {
-      switch (convUnit) {
-        case Constants.CM:
-          value = Constants.M_TO_CM(value);
-          break;
-        case Constants.KM:
-          value = Constants.M_TO_KM(value);
-          break;
-        case Constants.MILES:
-          value = Constants.M_TO_MILE(value);
-          break;
-      }
+      value = Conversions.MConversion(convUnit, value);
+    } else if (origUnit === Constants.MILES) {
+      value = Conversions.MileConversion(convUnit, value);
     }
 
     return fixInput(value);
