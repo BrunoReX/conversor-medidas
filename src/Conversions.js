@@ -1,65 +1,65 @@
 import * as Constants from "./Constants.js";
 
 // CM
-export function CM_TO_M(value) {
+function cmToM(value) {
   return value * 0.01;
 }
 
-export function CM_TO_KM(value) {
+function cmToKm(value) {
   return value * 0.00001;
 }
 
-export function CM_TO_MILE(value) {
+function cmToMile(value) {
   return value * 0.0000062137;
 }
 
 // Metros
-export function M_TO_CM(value) {
+function mToCm(value) {
   return value * 100;
 }
 
-export function M_TO_KM(value) {
+function mToKm(value) {
   return value * 0.001;
 }
 
-export function M_TO_MILE(value) {
+function mToMile(value) {
   return value * 0.00062137;
 }
 
 // KM
-export function KM_TO_CM(value) {
+function kmToCm(value) {
   return value * 100000;
 }
 
-export function KM_TO_M(value) {
+function kmToM(value) {
   return value * 1000;
 }
 
-export function KM_TO_MILE(value) {
+function kmToMile(value) {
   return value * 0.60934;
 }
 
 // Milhas
-export function MILE_TO_CM(value) {
+function mileToCm(value) {
   return value * 160934.4;
 }
 
-export function MILE_TO_M(value) {
+function mileToM(value) {
   return value * 1609.344;
 }
 
-export function MILE_TO_KM(value) {
+function mileToKm(value) {
   return value * 1.60934;
 }
 
 export function CmConversion(convUnit, value) {
   switch (convUnit) {
     case Constants.M:
-      return CM_TO_M(value);
+      return cmToM(value);
     case Constants.KM:
-      return CM_TO_KM(value);
+      return cmToKm(value);
     case Constants.MILES:
-      return CM_TO_MILE(value);
+      return cmToMile(value);
     default:
       return value;
   }
@@ -68,11 +68,11 @@ export function CmConversion(convUnit, value) {
 export function MConversion(convUnit, value) {
   switch (convUnit) {
     case Constants.CM:
-      return M_TO_CM(value);
+      return mToCm(value);
     case Constants.KM:
-      return M_TO_KM(value);
+      return mToKm(value);
     case Constants.MILES:
-      return M_TO_MILE(value);
+      return mToMile(value);
     default:
       return value;
   }
@@ -81,11 +81,11 @@ export function MConversion(convUnit, value) {
 export function KmConversion(convUnit, value) {
   switch (convUnit) {
     case Constants.CM:
-      return KM_TO_CM(value);
+      return kmToCm(value);
     case Constants.M:
-      return KM_TO_M(value);
+      return kmToM(value);
     case Constants.MILES:
-      return KM_TO_MILE(value);
+      return kmToMile(value);
     default:
       return value;
   }
@@ -94,11 +94,11 @@ export function KmConversion(convUnit, value) {
 export function MileConversion(convUnit, value) {
   switch (convUnit) {
     case Constants.CM:
-      return MILE_TO_CM(value);
+      return mileToCm(value);
     case Constants.M:
-      return MILE_TO_M(value);
+      return mileToM(value);
     case Constants.KM:
-      return MILE_TO_KM(value);
+      return mileToKm(value);
     default:
       return value;
   }
