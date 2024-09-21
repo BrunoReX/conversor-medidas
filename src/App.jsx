@@ -19,38 +19,38 @@ function App() {
 
     if (origUnit === Constants.KM) {
       switch (convUnit) {
-        case Constants.MILES:
-          value = Constants.KM_TO_MILE(value);
-          break;
         case Constants.CM:
           value = Constants.KM_TO_CM(value);
           break;
         case Constants.M:
           value = Constants.KM_TO_M(value);
           break;
+        case Constants.MILES:
+          value = Constants.KM_TO_MILE(value);
+          break;
       }
     } else if (origUnit === Constants.MILES) {
       switch (convUnit) {
-        case Constants.KM:
-          value = Constants.MILE_TO_KM(value);
-          break;
         case Constants.CM:
           value = Constants.MILE_TO_CM(value);
           break;
         case Constants.M:
           value = Constants.MILE_TO_M(value);
           break;
+        case Constants.KM:
+          value = Constants.MILE_TO_KM(value);
+          break;
       }
     } else if (origUnit === Constants.CM) {
       switch (convUnit) {
+        case Constants.M:
+          value = Constants.CM_TO_M(value);
+          break;
         case Constants.KM:
           value = Constants.CM_TO_KM(value);
           break;
         case Constants.MILES:
           value = Constants.CM_TO_MILE(value);
-          break;
-        case Constants.M:
-          value = Constants.CM_TO_M(value);
           break;
       }
     } else if (origUnit === Constants.M) {
