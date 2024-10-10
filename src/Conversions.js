@@ -1,6 +1,27 @@
 import * as Constants from "./Constants.js";
 
+// MM
+function mmToCm(value) {
+  return value * 0.1;
+}
+
+function mmToM(value) {
+  return value * 0.001;
+}
+
+function mmToKm(value) {
+  return value * 0.000001;
+}
+
+function mmToMile(value) {
+  return value * 6.2137119223733e-7;
+}
+
 // CM
+function cmToMm(value) {
+  return value * 10;
+}
+
 function cmToM(value) {
   return value * 0.01;
 }
@@ -14,6 +35,10 @@ function cmToMile(value) {
 }
 
 // Metros
+function mToMm(value) {
+  return value * 1000;
+}
+
 function mToCm(value) {
   return value * 100;
 }
@@ -27,6 +52,10 @@ function mToMile(value) {
 }
 
 // KM
+function kmToMm(value) {
+  return value * 1000000;
+}
+
 function kmToCm(value) {
   return value * 100000;
 }
@@ -40,6 +69,10 @@ function kmToMile(value) {
 }
 
 // Milhas
+function mileToMm(value) {
+  return value * 1609344;
+}
+
 function mileToCm(value) {
   return value * 160934.4;
 }
@@ -52,8 +85,25 @@ function mileToKm(value) {
   return value * 1.60934;
 }
 
+export function MmConversion(convUnit, value) {
+  switch (convUnit) {
+    case Constants.CM:
+      return mmToCm(value);
+    case Constants.M:
+      return mmToM(value);
+    case Constants.KM:
+      return mmToKm(value);
+    case Constants.MILES:
+      return mmToMile(value);
+    default:
+      return value;
+  }
+}
+
 export function CmConversion(convUnit, value) {
   switch (convUnit) {
+    case Constants.MM:
+      return cmToMm(value);
     case Constants.M:
       return cmToM(value);
     case Constants.KM:
@@ -67,6 +117,8 @@ export function CmConversion(convUnit, value) {
 
 export function MConversion(convUnit, value) {
   switch (convUnit) {
+    case Constants.MM:
+      return mToMm(value);
     case Constants.CM:
       return mToCm(value);
     case Constants.KM:
@@ -80,6 +132,8 @@ export function MConversion(convUnit, value) {
 
 export function KmConversion(convUnit, value) {
   switch (convUnit) {
+    case Constants.MM:
+      return kmToMm(value);
     case Constants.CM:
       return kmToCm(value);
     case Constants.M:
@@ -93,6 +147,8 @@ export function KmConversion(convUnit, value) {
 
 export function MileConversion(convUnit, value) {
   switch (convUnit) {
+    case Constants.MM:
+      return mileToMm(value);
     case Constants.CM:
       return mileToCm(value);
     case Constants.M:

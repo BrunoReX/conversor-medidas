@@ -18,7 +18,9 @@ function App() {
       return "Número inválido!";
     }
 
-    if (origUnit === Constants.CM) {
+    if (origUnit === Constants.MM) {
+      value = Conversions.MmConversion(convUnit, value);
+    } else if (origUnit === Constants.CM) {
       value = Conversions.CmConversion(convUnit, value);
     } else if (origUnit === Constants.KM) {
       value = Conversions.KmConversion(convUnit, value);
